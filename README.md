@@ -14,38 +14,38 @@ Produire une table agrégée **mois × compagnie × avion × destination**, sans
 2. **Valeurs manquantes** : les 2 512 vols sans immatriculation d'avion (`tailnum`) sont conservés dans un groupe explicite `NON_RENSEIGNE`, plutôt que supprimés.
 3. **Agrégation** par mois, compagnie, avion et destination, en distinguant les effectifs (vols programmés, partis, observés) pour que chaque moyenne repose sur le bon dénominateur.
 4. **Contrôles**, appliqués à la table en mémoire puis au fichier exporté et relu :
-   - colonnes présentes et dans l'ordre attendu ;
-   - clé `month + carrier + tailnum + dest` complète et unique ;
-   - nom de compagnie renseigné partout ;
-   - effectifs entiers et positifs ;
-   - cohérence des effectifs entre eux (retardés ≤ observés ≤ partis ≤ programmés) ;
-   - réconciliation des totaux avec la table au grain « vol ».
+   - colonnes présentes et dans l'ordre attendu 
+   - clé `month + carrier + tailnum + dest` complète et unique 
+   - nom de compagnie renseigné partout 
+   - effectifs entiers et positifs 
+   - cohérence des effectifs entre eux (retardés ≤ observés ≤ partis ≤ programmés) 
+   - réconciliation des totaux avec la table au grain « vol »
 
 ## Résultats
 
 Le tableau de bord présente :
 
-- le **retard moyen pondéré par mois** pour les cinq plus grosses compagnies ;
-- la **distance moyenne des vols par compagnie** ;
-- les **dix avions** avec le plus de départs retardés de plus de 15 minutes ;
-- une section **« Lecture et limites »**, qui discute la représentativité des moyennes (par exemple, la moyenne d'une compagnie ne reposant que sur 32 vols est peu fiable) et ce que les données ne permettent pas de conclure.
+- le **retard moyen pondéré par mois** pour les cinq plus grosses compagnies 
+- la **distance moyenne des vols par compagnie** 
+- les **dix avions** avec le plus de départs retardés de plus de 15 minutes 
+- une section **« Lecture et limites »**, qui discute la représentativité des moyennes (par exemple, la moyenne d'une compagnie ne reposant que sur 32 vols est peu fiable) et ce que les données ne permettent pas de conclure
 
 ![Tableau de bord](images/tableau-de-bord.png)
 
 ![Lecture et limites](images/lecture-et-limites.png)
 
 
-## Lancer le script
+## Lancement du script
 
 ```
 pip install pandas
-python src/mini_projet_agregation.py
+python agregation_vols.py
 ```
 
 Le script attend :
 
-- `data/derived/flights_analyse.csv` : la table des vols après les étapes de nettoyage réalisées en amont, au cours de l'UE (non incluses dans ce dépôt) ;
-- `data/raw/airlines.csv` : la table des compagnies (séparateur `;`).
+- `data/derived/flights_analyse.csv` : la table des vols après les étapes de nettoyage réalisées en amont, au cours de l'UE (non incluses dans ce dépôt) 
+- `data/raw/airlines.csv` : la table des compagnies (séparateur `;`)
 
 Il produit `data/derived/vols_mois_compagnie_avion_destination.csv`.
 
@@ -55,7 +55,7 @@ Les données ne sont pas versionnées. Elles proviennent du jeu public **nycflig
 
 | Fichier | Contenu |
 |---|---|
-| `src/mini_projet_agregation.py` | Jointure, agrégation, contrôles et export |
+| `agregation_vols.py` | Jointure, agrégation, contrôles et export |
 | `images/` | Captures du tableau de bord Excel |
 
 ## Auteur
