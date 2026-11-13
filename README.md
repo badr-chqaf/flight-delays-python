@@ -57,6 +57,7 @@ Les données ne sont pas versionnées. Elles proviennent du jeu public **nycflig
 |---|---|
 | `agregation_vols.py` | Jointure, agrégation, contrôles et export |
 | `images/` | Captures du tableau de bord Excel |
+| `tableau_de_bord_vols.xlsx` | Tableau de bord Excel complet (18 Mo), à télécharger |
 
 ## Auteur
 
